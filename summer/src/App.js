@@ -6,6 +6,7 @@ import NewProduct from "./pages/NewProduct";
 import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
 import NotFound from "./pages/NotFound";
+import './App.css';
 
 function App() {
   return (
