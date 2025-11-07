@@ -1,25 +1,40 @@
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
 import { LuSquareMenu } from "react-icons/lu";
 import '../App.css'
-import { login } from "../api/firebase";
+import { login, logout, onUserStateChange } from "../api/firebase";
 
 
 export default function Navbar() {
+    const [user, setUser] = useState();
+    useEffect(() => {
+        onUserStateChange((user) => {
+            console.log(user);
+            setUser(user); 
+        });
+    },[]);
+    const handleLogin = () => {
+        login().then(setUser); // 사용자 설정
+    }
+    const handleLogOut = () => {
+        logout().then(setUser);
+    }
     return (
         <header className="flex justify-between border-b border-gray-300 p-1">
-            <div className="flex items-center text-4xl">
-                <p className="text-gray">
-                    <LuSquareMenu strokeWidth={0.8} />
-                </p>
+            <div className="flex items-center text-3xl">
                 <Link to="/" className="ml-3" style={{ fontFamily: 'Cafe24Meongi, sans-serif'}}>
                     Summer
                 </Link>
             </div>
-            <nav className="flex items-center gap-5 m-5" style={{ fontFamily: 'Cafe24Meongi, sans-serif', fontSize: '2rem'}}>
+            <nav className="flex items-center gap-5 m-1 text-2xl" style={{ fontFamily: 'Cafe24Meongi, sans-serif'}}>
                 <Link to="/allproducts">Products</Link>
                 <Link to="/carts">Carts</Link>
                 <Link to="/products/new">New</Link>
-                <button onClick={login}className="p-1 bg-red-500 text-white rounded-2xl">Login</button>
+                {!user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={handleLogin}>Login</button>}
+                {user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={handleLogOut}>Logout</button>}
+                <button className="text-gray text-4xl">
+                    <LuSquareMenu strokeWidth={0.7} />
+                </button>
             </nav>
         </header>
     )
