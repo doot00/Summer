@@ -8,17 +8,11 @@ import { login, logout, onUserStateChange } from "../api/firebase";
 export default function Navbar() {
     const [user, setUser] = useState();
     useEffect(() => {
-        onUserStateChange((user) => {
+        onUserStateChange(user => {
             console.log(user);
-            setUser(user); 
+            setUser(user);
         });
     },[]);
-    const handleLogin = () => {
-        login().then(setUser); // 사용자 설정
-    }
-    const handleLogOut = () => {
-        logout().then(setUser);
-    }
     return (
         <header className="flex justify-between border-b border-gray-300 p-1">
             <div className="flex items-center text-3xl">
@@ -30,8 +24,8 @@ export default function Navbar() {
                 <Link to="/allproducts">Products</Link>
                 <Link to="/carts">Carts</Link>
                 <Link to="/products/new">New</Link>
-                {!user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={handleLogin}>Login</button>}
-                {user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={handleLogOut}>Logout</button>}
+                {!user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={login}>Login</button>}
+                {user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={logout}>Logout</button>}
                 <button className="text-gray text-4xl">
                     <LuSquareMenu strokeWidth={0.7} />
                 </button>
