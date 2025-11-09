@@ -35,3 +35,10 @@ code {
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "proSlim_regular";
+  src: url('./assets/fonts/proSlim_regular.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
