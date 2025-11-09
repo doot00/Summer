@@ -1,18 +1,10 @@
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react";
 import { LuSquareMenu } from "react-icons/lu";
 import '../App.css'
-import { login, logout, onUserStateChange } from "../api/firebase";
-
+import { useAuthContext } from "./context/AuthContext";
 
 export default function Navbar() {
-    const [user, setUser] = useState();
-    useEffect(() => {
-        onUserStateChange(user => {
-            console.log(user);
-            setUser(user);
-        });
-    },[]);
+    const {user, login, logout} = useAuthContext();
     return (
         <header className="flex justify-between border-b border-gray-300 p-1">
             <div className="flex items-center text-3xl">
@@ -21,9 +13,15 @@ export default function Navbar() {
                 </Link>
             </div>
             <nav className="flex items-center gap-5 m-1 text-2xl" style={{ fontFamily: 'Cafe24Meongi, sans-serif'}}>
-                <Link to="/allproducts">Products</Link>
-                <Link to="/carts">Carts</Link>
-                <Link to="/products/new">New</Link>
+                <Link to="/allproducts">Clothes</Link>
+                <p>Foods</p>
+                <p>Supplements</p>
+                <p>Utility</p>
+                <p>Toy</p>
+                {user && <Link to="/carts">Carts</Link>}
+                {user && user.isAdmin && (
+                    <Link to="/products/new">New</Link>
+                )}
                 {!user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={login}>Login</button>}
                 {user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={logout}>Logout</button>}
                 <button className="text-gray text-4xl">
