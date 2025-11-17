@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { uploadImage } from "../api/uploader";
 import { addNewProduct } from "../api/firebase";
+import Navbar from "../components/Navbar";
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
@@ -39,11 +40,12 @@ export default function NewProduct() {
 
   return (
     <>
+    <Navbar/>
       <h1
-        className="flex justify-center items-center m-10 text-2xl"
-        style={{ fontFamily: "proSlim_regular, sans-serif" }}
+        className="flex justify-center items-center m-10 text-4xl"
+        style={{ fontFamily: "Cafe24Meongi, sans-serif" }}
       >
-        ✨ 새로운 제품 등록하기
+        New Product
       </h1>
       <section className="flex flex-col items-start gap-4">
         <div className="flex justify-center w-full relative">
@@ -63,7 +65,7 @@ export default function NewProduct() {
         </div>
 
         <form
-          className="flex flex-col w-full m-5"
+          className="flex flex-col w-full px-10"
           style={{ fontFamily: "proSlim_regular, sans-serif" }}
           onSubmit={handleSubmit}
         >
