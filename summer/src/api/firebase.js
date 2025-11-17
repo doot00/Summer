@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
-import { getDatabase, ref, get } from 'firebase/database';
+import { getDatabase, ref, set, get } from 'firebase/database';
+import {v4 as uuid} from 'uuid';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -23,6 +24,7 @@ export function logout() {
   signOut(auth).catch(console.error);
 }
 
+// 사용자 상태 변경
 export function onUserStateChange(callback) {
   // 변경될 때마다 callback 함수 호출
   onAuthStateChanged(auth, async(user) => {
@@ -41,5 +43,19 @@ async function adminUser(user){
       return {...user, isAdmin}
     }
     return user;
+  })
+}
+
+// 새로운 제품을 추가하기
+export async function addNewProduct(product, image) {
+  const id = uuid();
+  // 어디에 무엇을 저장할 것인지 데이터를 저장한다.
+  set(ref(database, `products/${id}`), {
+    // 정보를 등록하기
+    ...product, 
+    id, 
+    price: parseInt(product.price),
+    image, 
+    options: product.options.split(','),
   })
 }

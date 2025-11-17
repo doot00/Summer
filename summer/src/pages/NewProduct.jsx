@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { uploadImage } from "../api/uploader";
+import { addNewProduct } from "../api/firebase";
 
 export default function NewProduct() {
     const [product, setProduct ] = useState({});
@@ -7,7 +9,8 @@ export default function NewProduct() {
         const { name,value, files} = e.target;
         if(name === 'file') {
             setFile(files && files[0]); //첫번째 file만 set 해준다.
-        
+            console.log(files[0]); // 제대로 나오는 것을 확인할 수 있다.
+            
             return;
         }
         setProduct((product) => ({...product, [name]: value})); //update되는 부분만 setProduct
@@ -15,7 +18,12 @@ export default function NewProduct() {
     const handleSubmit = (e) => {
         e.preventDefault(); 
         // 제품의 사진을 cloudinary에 업로드, url 획득한다.
-        // firebase 새로운 제품 추가  
+        // firebase 새로운 제품 추가
+        uploadImage(file).then(url => {
+            console.log(url);
+            addNewProduct(product, url);
+            // firebase에 새로운 제품 추가
+        })
     };
 
     return (
@@ -32,11 +40,11 @@ export default function NewProduct() {
                     <input className="m-2 p-2 bg-gray-100 rounded-xl" type="category" name="category" value={product.category ?? ''} placeholder="카테고리" required onChange={handleChange}/>
                     <input className="m-2 p-2 bg-gray-100 rounded-xl" type="text" name="description" value={product.description ?? ''} placeholder="제품 설명" required onChange={handleChange}/>
                     <input className="m-2 p-2 bg-gray-100 rounded-xl" type="text" name="options" value={product.options ?? ''} placeholder="옵션들(콤마(,)로 구분" required onChange={handleChange}/>
+                <div className="flex justify-center items-center mb-10">
+                    <button className="bg-red-500 rounded-2xl p-2 w-[200px] text-white font-bold" style={{ fontFamily: 'proSlim_regular, sans-serif'}}>제품 등록하기</button>
+                </div>
                 </form>
             </section>
-            <div className="flex justify-center items-center mb-10">
-                <button className="bg-red-500 rounded-2xl p-2 w-[200px] text-white font-bold" style={{ fontFamily: 'proSlim_regular, sans-serif'}}>제품 등록하기</button>
-            </div>
         </>
     )
 }
