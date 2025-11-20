@@ -15,7 +15,6 @@ export default function Navbar() {
             <nav className="flex items-center gap-5 m-1 text-2xl" style={{ fontFamily: 'Cafe24Meongi, sans-serif'}}>
                 <Link to="/allproducts">Clothes</Link>
                 <p>Foods</p>
-                <p>Supplements</p>
                 <p>Utility</p>
                 <p>Toy</p>
                 {user && <Link to="/carts">Carts</Link>}

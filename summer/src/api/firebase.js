@@ -50,12 +50,26 @@ async function adminUser(user){
 export async function addNewProduct(product, image) {
   const id = uuid();
   // 어디에 무엇을 저장할 것인지 데이터를 저장한다.
-  set(ref(database, `products/${id}`), {
+  return set(ref(database, `products/${id}`), {
     // 정보를 등록하기
     ...product, 
     id, 
     price: parseInt(product.price),
     image, 
     options: product.options.split(','),
+  })
+}
+
+// 제품 가져오기
+export async function getProducts() {
+  return get(ref(database, 'products')).then(snapshot => {
+    if(snapshot.exists()) {
+      const products = Object.values(snapshot.val()); // Object형태로 value들만 가지고 오기
+      return products.map(product => ({
+        ...product,
+        price: typeof product.price === "object" ? Number(Object.values(product.price)[0]) : Number(product.price)
+      }))
+    }
+    return [];
   })
 }
