@@ -1,7 +1,6 @@
 import { getProducts } from "../api/firebase";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../pages/ProductCard";
-import Navbar from "./Navbar";
 
 export default function Products() {
   const {
@@ -15,7 +14,6 @@ export default function Products() {
 
   return (
     <>
-      <Navbar/>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error.message}</p>}
       <ul className="grid grid-cols-1 md:grid-cols-4 lg-grid-cols-4 gap-4 p-4">
