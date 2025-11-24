@@ -1,9 +1,13 @@
-import Banner from "./Banner";
+import EmblaCarousel from "../components/EmblaCarousel";
+
+const OPTIONS = { align: 'start'}
+const SLIDE_COUNT = 6
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function Home() {
     return (
         <>
-            <Banner/>
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} />
         </>
     )
 }
