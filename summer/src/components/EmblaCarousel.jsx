@@ -32,7 +32,7 @@ const EmblaCarousel = (props) => {
   ]
 
   return (
-    <section className="h-[500px] relative">
+    <section className="h-[450px] relative">
       <div className="embla__viewport w-full h-full bg-yellow-900" ref={emblaRef}>
         <div className="embla__container w-full h-full h-200">
           {slides.map((index) => (

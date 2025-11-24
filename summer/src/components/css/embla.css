@@ -154,8 +154,8 @@
   padding: 0;
   margin: 0;
   box-shadow: inset 0 0 0 0.2rem #eaeaea;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 3rem;
+  height: 3rem;
   z-index: 1;
   border-radius: 50%;   
   color: var(--text-body);
@@ -169,8 +169,8 @@
   pointer-events: none;
 }
 .embla__button__svg {
-  width: 35%;
-  height: 35%;
+  width: 30%;
+  height: 30%;
 }
 .embla__dots {
   display: flex;
@@ -191,8 +191,8 @@
   border: 0;
   padding: 0;
   margin: 0;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,8 +200,8 @@
 }
 .embla__dot:after {
   box-shadow: inset 0 0 0 0.2rem #eaeaea;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
