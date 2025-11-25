@@ -56,7 +56,7 @@ const EmblaCarousel = (props) => {
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
 
-        <div className="embla__dots">
+        <div className="embla__dots mt-0">
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}

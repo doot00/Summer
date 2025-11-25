@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Food from "./pages/Food";
 import Clothes from "./pages/Clothes";
 import Utility from "./pages/Utility";
-import Toy from "./pages/Toy";
+import Supplement from"./pages/Supplement";
 import { AuthContextProvider } from "./components/context/AuthContext";
 import './App.css';
 import Navbar from "./components/Navbar";
@@ -22,7 +22,7 @@ function App() {
         <Route path="/clothes" element={<Clothes />} />
         <Route path="/food" element={<Food/>} />
         <Route path="/utility" element={<Utility/>}/>
-        <Route path="/toy" element={<Toy/>}/>
+        <Route path="/supplement" element={<Supplement/>}/>
         <Route path="/products/new"
           element={
             <ProtectedRoute requireAdmin>

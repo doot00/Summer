@@ -67,8 +67,9 @@ export async function getProducts() {
       const products = Object.values(snapshot.val()); // Object형태로 value들만 가지고 오기
       return products.map(product => ({
         ...product,
-        price: typeof product.price === "object" ? Number(Object.values(product.price)[0]) : Number(product.price)
+        price: typeof product.price === "object" ? Number(Object.values(product.price)[0]) : Number(product.price)      
       }))
+      .filter(product => Array.isArray(product.options) && product.options.includes('clothes'))
     }
     return [];
   })
