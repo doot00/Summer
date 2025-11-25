@@ -12,7 +12,6 @@ export default function Clothes() {
                     <p className="ml-5 text-lg">원피스</p>
                 </div>
             </section>
-
     )
 }
 

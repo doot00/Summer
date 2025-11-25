@@ -60,16 +60,31 @@ export async function addNewProduct(product, image) {
   })
 }
 
-// 제품 가져오기
+// 제품 가져오기 
 export async function getProducts() {
   return get(ref(database, 'products')).then(snapshot => {
     if(snapshot.exists()) {
       const products = Object.values(snapshot.val()); // Object형태로 value들만 가지고 오기
       return products.map(product => ({
         ...product,
-        price: typeof product.price === "object" ? Number(Object.values(product.price)[0]) : Number(product.price)      
+        price: typeof product.price === "object" ? Number(Object.values(product.price)[0]) : Number(product.price)
       }))
       .filter(product => Array.isArray(product.options) && product.options.includes('clothes'))
+    }
+    return [];
+  })
+}
+
+// food 가져오기
+export async function getFoods() {
+  return get(ref(database, 'products')).then(snapshot => {
+    if(snapshot.exists()){
+      const products = Object.values(snapshot.val()); // Object형태로 value들을 가지고 오기
+      return products.map(product => ({
+        ...product,
+        price: typeof product.price === "object" ? Number(Object.values(product.price)[0]) : Number(product.price)
+      }))
+      .filter(product => Array.isArray(product.options) && product.options.includes('feed'))
     }
     return [];
   })
