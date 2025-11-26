@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
-import MyCart from "./pages/MyCart";
+// import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -13,7 +13,6 @@ import Supplement from"./pages/Supplement";
 import { AuthContextProvider } from "./components/context/AuthContext";
 import './App.css';
 import Navbar from "./components/Navbar";
-
 function App() {
   return (
     <AuthContextProvider>
@@ -32,14 +31,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/carts"
           element={
             <ProtectedRoute>
               <MyCart />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
