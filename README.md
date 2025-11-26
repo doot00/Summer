@@ -3,7 +3,7 @@
     </div>
     <div style="text-align: left;"> 
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> Summer </h2>  
-    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;"> 강아지 종합 쇼핑몰 Summer 입니다. </div> 
+    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;"> 강아지 용품을 판매하는 종합 쇼핑몰 웹사이트입니다. </div> 
     </div>
     <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🛠️ Tech Stacks </h2> <br> 
