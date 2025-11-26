@@ -17,13 +17,10 @@
           <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white">
           </div>
     </div>
-
     <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🧑‍💻 Contact me </h2> <br> 
-    <div style="text-align: left;">  </div>  <br> 
-    <div style="text-align: left;"><a href="https://github.com/doot00/GoPet" target="_blank" title="my github link" class="d-flex align-items-center gap-2 text-decoration-none" style="font-size: 28px;">
-                                                    <i class="fa-brands fa-github" style="color: black;"></i>
-                                                <span class="bebas-neue" style="color: black;">Github</span>
-                                                </a>
+    <div align= "center"> <a href=https://github.com/doot00> <img src="https://img.shields.io/badge/Velog-20C997?style=for-the-badge&logo=Velog&logoColor=white&link=https://velog.io/@seonguul_2"> </a>
+          </div>  <br> 
+    <div align= "center">  </div> 
     </div>
-</div>
+    
