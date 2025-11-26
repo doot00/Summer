@@ -76,7 +76,7 @@ export async function getProducts() {
 }
 
 // food 가져오기
-export async function getFoods() {
+export async function getFeeds() {
   return get(ref(database, 'products')).then(snapshot => {
     if(snapshot.exists()){
       const products = Object.values(snapshot.val()); // Object형태로 value들을 가지고 오기
@@ -84,7 +84,6 @@ export async function getFoods() {
         ...product,
         price: typeof product.price === "object" ? Number(Object.values(product.price)[0]) : Number(product.price)
       }))
-      .filter(product => Array.isArray(product.options) && product.options.includes('feed'))
     }
     return [];
   })
