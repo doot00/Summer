@@ -1,4 +1,5 @@
 import EmblaCarousel from "../components/EmblaCarousel";
+import AllProducts from "./AllProducts";
 
 const OPTIONS = { align: 'start'}
 const SLIDE_COUNT = 6
@@ -8,6 +9,7 @@ export default function Home() {
     return (
         <>
             <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+            <AllProducts/>
         </>
     )
 }
