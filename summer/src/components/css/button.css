@@ -1,0 +1,22 @@
+.menu__button {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #5e6774;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 10px;
+}
+
+.menu__button:hover {
+    border-bottom: 2px solid #5e6774;
+    transition: 0.5s;
+    border-radius: 1px;
+}
+
+.menu__arrow {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    margin-top: 6px;
+    color: #5e6774;
+}

@@ -15,6 +15,7 @@ export default function Navbar() {
                 <Link to="/clothes">Clothes</Link>
                 <Link to="/food">Food</Link>
                 <Link to="/utility">Utility</Link>
+                <Link to="/toy">Toy</Link>
                 <Link to="/supplement">Supplement</Link>
                 {user && <Link to="/carts">Carts</Link>}
                 {user && user.isAdmin && (

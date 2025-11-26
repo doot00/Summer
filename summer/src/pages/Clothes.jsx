@@ -1,17 +1,39 @@
+import { useQuery } from "@tanstack/react-query";
 import { SlArrowRight } from "react-icons/sl";
+import ProductCard from "./ProductCard";
+import { useState } from "react";
+import '../components/css/button.css'
+import { getProducts } from "../api/firebase";
 
 export default function Clothes() {
+    const [category, setCategory] = useState("outer");
+    const { isLoading, error, data: products,} = useQuery({ queryKey: ["products"], queryFn: getProducts,});
+    
+    const filteredProducts = products?.filter((product) =>
+    category === "clothes" ? product.category === "clothes" : (Array.isArray(product.options) && product.options.includes(category))) ?? []; 
+
     
     return (
-            <section className="flex justify-center border-b border-gray-300 m-7">
-                <div className="flex mb-7 text-gray-600" style={{ fontFamily: "proSlim_regular, sans-serif" }}>
-                    <p className="mr-5 text-lg">Clothes</p>
-                    <SlArrowRight className="text-lg ml-5 mr-5 mt-1" />
-                    <p className="ml-5 mr-5 text-lg">아우터</p>
-                    <p className="ml-5 mr-5 text-lg">티셔츠</p>
-                    <p className="ml-5 text-lg">원피스</p>
+            <>
+                <div className="flex justify-center border-b border-gray-300 m-7">
+                                <div className="flex mb-7" style={{ fontFamily: "proSlim_regular, sans-serif" }}>
+                                    <button className="menu__button" onClick={() =>setCategory("clothes")}>All</button>
+                                    <SlArrowRight className="menu__arrow"/>
+                                    <button className="menu__button" onClick={() => setCategory("outer")} >Outer</button>
+                                    <button className="menu__button" onClick={() => setCategory("top")}>Top</button>
+                                    <button className="menu__button" onClick={() => setCategory("dress")}>Dress</button>
+                                </div>
                 </div>
-            </section>
+                <div>
+                    {isLoading && <p>Loading...</p>}
+                    {error && <p>{error.message}</p>}
+                    <ul className="grid grid-cols-1 md:grid-cols-4 lg-grid-cols-4 gap-4 p-4">
+                        {filteredProducts.map((product) => (
+                            <ProductCard key={product.id} product={product}  />
+                        ))}
+                    </ul>
+                </div>
+            </>    
     )
 }
 
