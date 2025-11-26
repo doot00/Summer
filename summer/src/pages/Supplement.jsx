@@ -14,7 +14,7 @@ export default function Supplement() {
 
     return (
         <>
-            <div className="flex justify-center border-b border-gray-300 m-7">
+            <div className="flex justify-center border-b border-gray-300 mt-10 mb-10 w-full">
                            <div className="flex mb-7 text-gray-600" style={{ fontFamily: "proSlim_regular, sans-serif" }}>
                                 <button className="menu__button" onClick={() => setCategory("supplement")}>All</button>
                                 <SlArrowRight className="menu__arrow" />

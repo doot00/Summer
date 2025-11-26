@@ -14,7 +14,7 @@ export default function Food() {
 
     return (
         <>
-            <div className="flex justify-center border-b border-gray-300 m-7">
+            <div className="flex justify-center border-b border-gray-300 mt-10 mb-10 w-full">
                             <div className="flex mb-7" style={{ fontFamily: "proSlim_regular, sans-serif" }}>
                                 <button className="menu__button" onClick={() =>setCategory("food")}>All</button>
                                 <SlArrowRight className="menu__arrow"/>
