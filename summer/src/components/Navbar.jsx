@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-// import { LuSquareMenu } from "react-icons/lu";
+import { LuSquareMenu } from "react-icons/lu";
 import { useAuthContext } from "./context/AuthContext";
 
 export default function Navbar() {
@@ -23,12 +23,7 @@ export default function Navbar() {
                 )}
                 {!user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={login}>Login</button>}
                 {user && <button className="p-1 bg-red-500 text-white rounded-2xl" onClick={logout}>Logout</button>}
-
-
-                {/* <button className="text-gray text-4xl">
-                    <LuSquareMenu strokeWidth={0.7} />
-                </button> */}
-                
+                <button className="text-gray text-4xl"><LuSquareMenu strokeWidth={0.7} /></button>
             </nav>
         </header>
     )

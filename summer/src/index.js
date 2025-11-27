@@ -14,6 +14,3 @@ root.render(
     </BrowserRouter>
   </QueryClientProvider>
 );
-
-
-// useQuery를 사용하기 위해서 우산을 씌워줘야 한다. 

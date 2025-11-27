@@ -24,13 +24,7 @@ function App() {
         <Route path="/utility" element={<Utility/>}/>
         <Route path="/toy" element={<Toy/>}/>
         <Route path="/supplement" element={<Supplement/>}/>
-        <Route path="/products/new"
-          element={
-            <ProtectedRoute requireAdmin>
-              <NewProduct />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/products/new"element={<ProtectedRoute requireAdmin><NewProduct /></ProtectedRoute>}/>
         <Route path="/carts" element={<MyCart />}/>
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
