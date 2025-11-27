@@ -14,10 +14,10 @@ export default function Navbar() {
             <nav className="flex items-center gap-5 m-1 text-2xl" style={{ fontFamily: 'Cafe24Meongi, sans-serif'}}>
                 <Link to="/clothes">Clothes</Link>
                 <Link to="/food">Food</Link>
-                {/* <Link to="/utility">Utility</Link> */}
+                <Link to="/utility">Utility</Link>
                 <Link to="/toy">Toy</Link>
                 <Link to="/supplement">Supplement</Link>
-                {/* {user && <Link to="/carts">Carts</Link>} */}
+                {user && <Link to="/carts">Carts</Link>}
                 {user && user.isAdmin && (
                     <Link to="/products/new">New</Link>
                 )}

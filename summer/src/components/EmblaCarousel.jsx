@@ -40,10 +40,9 @@ const EmblaCarousel = (props) => {
               <div className="absolute inset-0 bg-cover opacity-80"
               style={{backgroundImage: `url(${slideimg[index]})`}}/>
               <div className="absolute w-full top-[200px] text-center text-gray-50 drop-shadow-2xl z-10">
-                <h2 className="text-6xl" style={{ fontFamily: 'Cafe24Meongi, sans-serif' }}>
+                <h2 className="text-7xl" style={{ fontFamily: 'Cafe24Meongi, sans-serif' }}>
                   Summer
                   </h2>
-                  <p className="text-xl">썸머</p>
               </div>
             </div>
           ))}

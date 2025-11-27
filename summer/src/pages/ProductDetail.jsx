@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function ProductDetail() {
   const {
     state: {
-      product: { id, image, title, description, category, price, options },
+      product: { image, title, description, category, price },
     },
   } = useLocation();
-  const [selected, setSelected] = useState(category);
-  const handleSelect = (e) => setSelected(e.target.value);
+
   const handleClick = (e) => {
     // 여기 장바구니에 추가하면 된다.
   };
