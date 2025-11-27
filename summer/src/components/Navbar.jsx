@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { LuSquareMenu } from "react-icons/lu";
-import { useAuthContext } from "./context/AuthContext";
+import { useAuthContext } from "../context/AuthContext";
+import CartStatus from "./CartStatus";
 
 export default function Navbar() {
     const {user, login, logout} = useAuthContext();
@@ -17,7 +18,9 @@ export default function Navbar() {
                 <Link to="/utility">Utility</Link>
                 <Link to="/toy">Toy</Link>
                 <Link to="/supplement">Supplement</Link>
-                {user && <Link to="/carts">Carts</Link>}
+                {user && <Link to="/carts">
+                    <CartStatus/>
+                </Link>}
                 {user && user.isAdmin && (
                     <Link to="/products/new">New</Link>
                 )}

@@ -10,9 +10,9 @@ import Toy from "./pages/Toy";
 import Clothes from "./pages/Clothes";
 import Utility from "./pages/Utility";
 import Supplement from"./pages/Supplement";
-import { AuthContextProvider } from "./components/context/AuthContext";
 import './App.css';
 import Navbar from "./components/Navbar";
+import { AuthContextProvider } from "./context/AuthContext";
 function App() {
   return (
     <AuthContextProvider>
