@@ -1,0 +1,40 @@
+export default function NavBar() {
+    return (
+        <section>
+            <div>
+                <h2>Clothes</h2>
+                <p>Outer</p>
+                <p>Top</p>
+                <p>Dress</p>
+            </div>
+            <div>
+                <h2>Food</h2>
+                <p>Feed</p>
+                <p>Snack</p>
+            </div>
+            <div>
+                <h2>Utility</h2>
+                <p>Bath</p>
+                <p>Hygine</p>
+                <p>Bag</p>
+                <p>Stroller</p>
+                <p>House</p>
+            </div>
+            <div>
+                <h2>Toy</h2>
+                <p>Fabric</p>
+                <p>Ball</p>
+                <p>Nosework</p>
+            </div>
+            <div>
+                <h2>Supplement</h2>
+                <p>Digest</p>
+                <p>Joint</p>
+                <p>Skin</p>
+                <p>Eyes</p>
+                <p>Heart</p>
+                <p>Kidney</p>
+            </div>
+        </section>
+    )
+}
