@@ -1,18 +1,21 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { CgCloseR } from "react-icons/cg";
-import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
+import useCart from "./hooks/useCart";
 
 const ICON_CLASS = "transition-all cursor-pointer hover:scale-105 mx-2";
-export default function CartItem({product, product: {id, image, title, category, price, quantity}, uid}) {
+export default function CartItem({
+    product, 
+    product: {id, image, title, category, price, quantity}}) {
 
+    const { addOrUpdateItem, removeItem } = useCart();
     const handlePlus = () => {
-        addOrUpdateToCart(uid, {...product, quantity: quantity + 1});
+        addOrUpdateItem.mutate({...product, quantity: quantity + 1});
     }
     const handleMinus = () => {
         if(quantity<2) return;
-        addOrUpdateToCart(uid, {...product, quantity: quantity - 1});
+        addOrUpdateItem.mutate({...product, quantity: quantity - 1});
     }
-    const handleDelete = () => removeFromCart(uid, id);
+    const handleDelete = () => removeItem.mutate(id);
     return (
         <>
             <li className="flex justify-between items-center p-10 border rounded-xl p-2 m-2 mt-10">

@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
 import Home from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import MyCart from "./pages/MyCart";
@@ -10,13 +11,16 @@ import Toy from "./pages/Toy";
 import Clothes from "./pages/Clothes";
 import Utility from "./pages/Utility";
 import Supplement from"./pages/Supplement";
-import './App.css';
 import Navbar from "./components/Navbar";
-import { AuthContextProvider } from "./context/AuthContext";
+import './App.css';
+import useToggleMenu from "./components/hooks/useToggleMenu";
+
+
 function App() {
+  const { isMenuOpen, toggleMenu } = useToggleMenu(false);
   return (
     <AuthContextProvider>
-      <Navbar/>
+      <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/clothes" element={<Clothes />} />
