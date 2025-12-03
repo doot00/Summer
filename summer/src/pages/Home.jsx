@@ -1,5 +1,5 @@
 import EmblaCarousel from "../components/EmblaCarousel";
-import AllProducts from "./AllProducts";
+import AllProducts from "../components/AllProducts";
 
 const OPTIONS = { align: 'start'}
 const SLIDE_COUNT = 6

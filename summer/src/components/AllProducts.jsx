@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { SlArrowRight } from "react-icons/sl";
-import ProductCard from "./ProductCard";
 import { useState } from "react";
 import '../components/css/button.css'
 import { getProducts } from "../api/firebase";
+import ProductCard from "../pages/ProductCard";
 
 export default function AllProducts() {
     const [category, setCategory] = useState("clothes");

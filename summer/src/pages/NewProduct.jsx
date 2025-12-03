@@ -21,7 +21,6 @@ export default function NewProduct() {
     if (name === "file") {
       setFile(files && files[0]); //첫번째 file만 set 해준다.
       console.log(files[0]); // 제대로 나오는 것을 확인할 수 있다.
-
       return;
     }
     setProduct((product) => ({ ...product, [name]: value })); //update되는 부분만 setProduct
