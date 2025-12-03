@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { LuSquareMenu } from "react-icons/lu";
+// import { LuSquareMenu } from "react-icons/lu";
 import { useAuthContext } from "../context/AuthContext";
 import CartStatus from "./CartStatus";
-import SubMenu from "../pages/SubMenu";
 
 export default function Navbar({ isMenuOpen, toggleMenu }) {
   const { user, login, logout } = useAuthContext();
@@ -48,14 +47,14 @@ export default function Navbar({ isMenuOpen, toggleMenu }) {
             Logout
           </button>
         )}
-        <button className="text-gray text-4xl" onClick={toggleMenu}>
+        {/* <button className="text-gray text-4xl" onClick={toggleMenu}>
           <LuSquareMenu strokeWidth={0.7} />
-        </button>
-        {isMenuOpen && (
+        </button> */}
+        {/* {isMenuOpen && (
           <div className="absolute top-full right-0">
             <SubMenu />
           </div>
-        )}
+        )} */}
       </nav>
     </header>
   );

@@ -4,7 +4,7 @@ import useCart from "./hooks/useCart";
 
 const ICON_CLASS = "transition-all cursor-pointer hover:scale-105 mx-2";
 export default function CartItem({
-    product, 
+    product,
     product: {id, image, title, category, price, quantity}}) {
 
     const { addOrUpdateItem, removeItem } = useCart();
@@ -19,7 +19,7 @@ export default function CartItem({
     return (
         <>
             <li className="flex justify-between items-center p-10 border rounded-xl p-2 m-2 mt-10">
-                <input className="mx-5 scale-150" type="checkbox" />
+                {/* <input className="mx-5 scale-150" type="checkbox"/> */}
                 <div className="flex-1 flex justify-between items-center mx-5">
                 <img className='w-24 md:w-48 rounded-lg mx-5 mt-2'src={image} alt={title} />
                     <div className="basis-3/5 mx-10">
@@ -33,7 +33,7 @@ export default function CartItem({
                         <FaPlus className={ICON_CLASS} onClick={handlePlus}/>
                     </div>
                     <div className="text-xl mx-5 flex items-center">
-                        <CgCloseR className="transition-all cursor-pointer hover:scale-105 text-2xl" onClick={handleDelete} />
+                        <CgCloseR className="transition -a ll cursor-pointer hover:scale-105 text-2xl" onClick={handleDelete} />
                     </div>
                 </div>
             </li>
