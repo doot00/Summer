@@ -25,7 +25,7 @@ export default function ProductDetail() {
       <section className="flex flex-col justify-center py-20 md:flex-row p-4">
         <div className="flex justify-center w-full relative">
           <img
-            className={`w-[300px] h-[450px] object-contain px-4 basis-5/12 bg-cover ${
+            className={`w-[300px] h-[450px] object-contain px-2 basis-6/12 bg-cover ${
               success ? "opacity-20" : "opacity-100"
             }`}
             src={image}
@@ -38,7 +38,7 @@ export default function ProductDetail() {
           )}
         </div>
         <div
-          className="w-full basis-5/12 flex flex-col p-4"
+          className="w-full basis-6/12 flex flex-col p-4"
           style={{ fontFamily: "proSlim_regular, sans-serif" }}
         >
           <h2 className="text-3xl mb-2 font-bold py-2 border-b border-gray-400">

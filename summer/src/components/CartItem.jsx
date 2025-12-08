@@ -5,6 +5,8 @@ import useCart from "./hooks/useCart";
 const ICON_CLASS = "transition-all cursor-pointer hover:scale-105 mx-2";
 export default function CartItem({
     product,
+    checked,
+    onToggle,
     product: {id, image, title, category, price, quantity}}) {
 
     const { addOrUpdateItem, removeItem } = useCart();
@@ -16,12 +18,16 @@ export default function CartItem({
         addOrUpdateItem.mutate({...product, quantity: quantity - 1});
     }
     const handleDelete = () => removeItem.mutate(id);
+
     return (
         <>
-            <li className="flex justify-between items-center p-10 border rounded-xl p-2 m-2 mt-10">
-                {/* <input className="mx-5 scale-150" type="checkbox"/> */}
+            <li className="flex justify-between items-center p-10 border rounded-xl mt-5">
                 <div className="flex-1 flex justify-between items-center mx-5">
-                <img className='w-24 md:w-48 rounded-lg mx-5 mt-2'src={image} alt={title} />
+                    <div className="scale-150 mr-10">
+                        <input type="checkbox" checked={checked} onChange={onToggle} />
+                        <span>{product.name}</span>
+                    </div>
+                    <img className='w-[80px] w-[80px] rounded-lg mx-5'src={image} alt={title} />
                     <div className="basis-3/5 mx-10">
                         <p className="text-xl">{title}</p>
                         <p className="text-lg">{category}</p>
