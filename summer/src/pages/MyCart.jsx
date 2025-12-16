@@ -9,17 +9,47 @@ export default function MyCart() {
   } = useCart();
   const [checkItems, setCheckItems] = useState({});
 
+
   if (isLoading) return <p>Loading...</p>;
 
   const hasProducts = products && products.length > 0; // 쇼핑카트의 아이템이 1이상일 경우
 
-  const toggleCheck = (productId) => {
-    setCheckItems((prev) => ({
-      ...prev,
-      [productId]: !prev[productId],
-    }));
+  const toggleCheckItem = (id) => {
+    setCheckItems((prev) => {
+      const newState = { ...prev };
+      if (newState[id]) {
+        delete newState[id]; // 이미 체크 → 해제
+      } else {
+        newState[id] = true; // 미체크 → 체크
+      }
+      return newState;
+    });
   };
 
+  const toggleCheckAll = () => {
+    setCheckItems((prev) => {
+      const isEmpty = Object.keys(prev).length === 0;
+
+      if (isEmpty) {
+        const newState = {};
+        products.forEach((p) => {
+          newState[p.id] = true;
+        });
+        return newState;
+      }
+      const allChecked =
+        Object.keys(checkItems).length > 0 &&
+        Object.values(prev).every((v) => v);
+      const newState = {};
+      Object.keys(prev).forEach((key) => {
+        newState[key] = !allChecked;
+      });
+      return newState;
+    });
+  };
+
+  const isAllCheckd = products.length > 0 && Object.keys(checkItems).length === products.length;
+  // checkbox 선택된 list의 총 가격
   const selectedTotalPrice =
     products &&
     products.reduce((sum, item) => {
@@ -28,26 +58,6 @@ export default function MyCart() {
       }
       return sum;
     }, 0);
-
-  const toggleCheckAll = () => {
-    setCheckItems((prev) => {
-      const isEmpty = Object.keys(prev).length === 0;
-
-      if(isEmpty){
-        const newState = {};
-        products.forEach((p) => {
-          newState[p.id] = true;
-        });
-        return newState;
-      }
-      const allChecked = Object.keys(checkItems).length > 0 && Object.values(prev).every((v) => v);
-      const newState = {};
-      Object.keys(prev).forEach((key) => {
-        newState[key] = !allChecked;
-      });
-      return newState;
-    })
-  }
 
   return (
     <section>
@@ -63,16 +73,20 @@ export default function MyCart() {
           <section className="flex justify-between items-center mb-10 p-10 gap-x-5">
             <ul className="w-5/6 p-5 border rounded-2xl">
               <li className="flex text-2xl m-2 border-b p-4">
-                <input className="scale-150 mr-5" type="checkbox" checked={Object.keys(checkItems).length > 0 && Object.values(checkItems).every((v) => v)} onChange={toggleCheckAll} />
+                <input
+                  className="scale-150 mr-5"
+                  type="checkbox"
+                  checked={isAllCheckd}
+                  onChange={toggleCheckAll}
+                />
                 <p className="flex">전체상품주문</p>
-                
               </li>
               {products.map((product) => (
                 <CartItem
                   key={product.id}
                   product={product}
                   checked={!!checkItems[product.id]}
-                  onToggle={() => toggleCheck(product.id)}
+                  onChange={() => toggleCheckItem(product.id)}
                 />
               ))}
               <p className="flex border rounded-xl bg-gray-100 p-2 m-2 mt-5 justify-center text-xl">

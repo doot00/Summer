@@ -6,7 +6,7 @@ const ICON_CLASS = "transition-all cursor-pointer hover:scale-105 mx-2";
 export default function CartItem({
     product,
     checked,
-    onToggle,
+    onChange,
     product: {id, image, title, category, price, quantity}}) {
 
     const { addOrUpdateItem, removeItem } = useCart();
@@ -24,7 +24,7 @@ export default function CartItem({
             <li className="flex justify-between items-center p-10 border rounded-xl mt-5">
                 <div className="flex-1 flex justify-between items-center mx-5">
                     <div className="scale-150 mr-10">
-                        <input type="checkbox" checked={checked} onChange={onToggle} />
+                        <input type="checkbox" checked={checked} onChange={onChange} />
                         <span>{product.name}</span>
                     </div>
                     <img className='w-[80px] w-[80px] rounded-lg mx-5'src={image} alt={title} />
