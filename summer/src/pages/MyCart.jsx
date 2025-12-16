@@ -9,7 +9,6 @@ export default function MyCart() {
   } = useCart();
   const [checkItems, setCheckItems] = useState({});
 
-
   if (isLoading) return <p>Loading...</p>;
 
   const hasProducts = products && products.length > 0; // 쇼핑카트의 아이템이 1이상일 경우
@@ -28,27 +27,18 @@ export default function MyCart() {
 
   const toggleCheckAll = () => {
     setCheckItems((prev) => {
-      const isEmpty = Object.keys(prev).length === 0;
-
-      if (isEmpty) {
-        const newState = {};
-        products.forEach((p) => {
-          newState[p.id] = true;
-        });
-        return newState;
-      }
-      const allChecked =
-        Object.keys(checkItems).length > 0 &&
-        Object.values(prev).every((v) => v);
+      const allChecked = products.length > 0 && products.every((p) => prev[p.id]);
       const newState = {};
-      Object.keys(prev).forEach((key) => {
-        newState[key] = !allChecked;
+      products.forEach((p) => {
+        newState[p.id] = !allChecked;
       });
       return newState;
     });
   };
 
-  const isAllCheckd = products.length > 0 && Object.keys(checkItems).length === products.length;
+
+  const isAllCheckd = products.length > 0 && products.every((p) => checkItems[p.id]);
+
   // checkbox 선택된 list의 총 가격
   const selectedTotalPrice =
     products &&
